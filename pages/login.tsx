@@ -7,7 +7,7 @@ export default function LoginPage() {
 
     <>
 
-    <Header pesquisar="Buscar"/>
+    <Header pesquisar="Buscar" name="Sarah Barreto"/>
 
     <h1>Bem vindo ao Banco Digital</h1>
 

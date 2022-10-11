@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styles from '../../styles/Header.module.css';
 import { css} from '@emotion/css';
 import styled from '@emotion/styled';
 import { useSlotProps } from '@mui/base';
+import Input from '../Form/Input/Input';
+import Button from '../Button/Button';
 
 const HeaderPage = styled.header`
   background-color: #e1e1e1;
@@ -12,35 +14,33 @@ const HeaderPage = styled.header`
   justify-content: space-between;
   padding: 0 10%;`
 
-  const Input = styled.input`
-  background-color: #fff;
-  width: 190px;
-  border: none;
-  line-height: 30px;
-  padding-left: 10%;
-  border-radius: 10px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-  outline-color: orange;`
+ 
 
- const Button = styled.button`
- width: 100px;
- line-height: 30px;
- border: none;
- border-radius: 10px;
- margin-left: 10px;
- &:hover{
-  background-color: #ddd;
-  cursor: pointer;
- }`
+ 
 
- type HeaderProps = {
-  menu ?: Array<string>;
-  pesquisar ?: string;
- }
+ // type UserType = {
+//  email: string;
+// password: string;
+//}
 
+// type User = HeaderProps | UserType;
+
+// interface IHeaderProps  {
+  //  menu ?: Array<string>;
+  //pesquisar ?: string;
+  //name ?: string;
+  //}
   
+  
+  type HeaderProps = {
+   menu ?: Array<string>;
+   pesquisar ?: string;
+   name ?: string;
+   }
 
 export default function Header(props:HeaderProps) {
+  const [userAuth, setUserAuth] = useState<boolean>(true);
+  const[nameUser, setNameUser] = useState<string | undefined>(props.name);
 
   return (
 
@@ -64,10 +64,14 @@ export default function Header(props:HeaderProps) {
             <li>Contato</li>
           </ul>
           </nav>
+
+          {userAuth && (<div>
+            <span> Seja Bem vindo(a) {nameUser?nameUser:" visitante"}</span>
+          </div>)  }
        <div>
         
           <Input type= "text" placeholder = "Pesquisar" />
-          <Button>{props.pesquisar? props.pesquisar:"Search"} </Button>        
+          <Button disabled>{props.pesquisar? props.pesquisar:"Search"} </Button>        
         </div>   
        
         
