@@ -11,6 +11,18 @@ const MenuContainer = styled.nav`
     ul {
         margin: 0;
         padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        height: 300px;  
+        overflow-Y: auto;
+        &::-webkit-scrollbar-thumb {
+            background-color: #242424;
+            outline: 1px solid #777777;
+        }
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
         li {
             list-style: none;
             display: flex;
